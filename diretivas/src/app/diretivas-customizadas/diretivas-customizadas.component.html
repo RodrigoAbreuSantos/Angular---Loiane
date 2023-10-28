@@ -1,0 +1,22 @@
+<p fundoAmarelo>texto com fundo amarelo</p>
+
+<button fundoAmarelo>Botão com fundo amarelo</button>
+<h1>-----------------------------------------------------------------------------------</h1>
+<br>
+
+<p highlight [defaultColor]="'grey'" [highlightColor]="'red'">
+  Texto com highlight com cores customizadas
+</p>
+<h1>-----------------------------------------------------------------------------------</h1>
+<br>
+
+<h5>Diretivas Estrutura customizada - NgElse</h5>
+
+<div *ngIf="mostrarCursos">
+  Lista de Cursos Aqui
+</div>
+<div *ngElse="mostrarCursos">
+  Não tem curso para serem listados
+</div>
+<br>
+<button (click)="onMostrarCurso()">Mostrar ou Esconder cursos</button>

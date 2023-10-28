@@ -1,0 +1,16 @@
+<h1>*NgFor</h1>
+
+<ul>
+  <li *ngFor="let person of people, let i = index">
+    {{ i + 1 }} - {{ person.name }}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let curso of cursos, let i = index">
+    {{ i + 1 }} - {{ curso }}
+  </li>
+</ul>
+
+<!-- Ng For é um for, mas so que em uma diretiva ao inves de vc usar o for, pode apenas usar ng for-->
+

@@ -1,0 +1,120 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" > <!--vai fazer referencia ao form como um todo. O angular esta advinhando o que estamos colocando nesse formulario atraves dessa diretiva. O #f esta sendo associado O #f esta sendo associado ao controle de formulario do Angular e o evento de submit nos estamos passando essa variavel f, que é a variavel que estamos recebendo no metodo onSubmit la no template-form.component.ts
+-->
+  <div class="row mb-3"
+  [ngClass]="aplicaCssErro(nome)"
+  [class.has-error] ="!nome.valid && nome.touched"
+  [class.has-feedback] = "!estado.valid && estado.touched">
+  <!--Podemus usar o NgClass ao inves de class. Como é um metodo usa o []-->
+    <div class="col-sm-12"> <!--esse col-sm-12 => col => coluna, sm => small e 12 para ocupar a linha inteira-->
+      <label for="nome" class="form-label">Nome</label>
+    </div>
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
+        [(ngModel)]="usuario.nome" required #nome="ngModel">
+        <!--<div>
+          {{ nome.className }}
+        </div>-->
+        <!--<app-campo-control-erro [mostrarErro]="verificaValidTouched(nome)" msgErro="Nome é obrigatorio"></app-campo-control-erro>-->
+        <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert"> <!--Se o nome for invalido e o nome foi tocado vai mostrar o Nome obrigatorio-->
+          Nome é obrigatorio
+        </div>
+      </div>
+    <div id="emailHelp" class="form-text"></div>
+  </div>
+  <div class="row mb-3" [ngClass]="aplicaCssErro(email)">
+    <div class="col-sm-12">
+      <label for="email" class="form-label">Email</label>
+    </div>
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="email" name="email" placeholder="nome@gmail.com"
+        [(ngModel)]="usuario.email" required email #email="ngModel" > <!--Criando uma variavel local #email e acociando ela ao ngModel--> <!--Estamos associoando esse input com o nome é email cuja a diretiva é ngModel para um campo de formulario -->
+        <div *ngIf="!email.valid && email.touched" class="alert alert-danger" role="alert">
+          Email é obrigatorio
+        </div>
+      </div>
+    </div>
+    <div ngModelGroup="endereco"> <!--Agrupando todos os dados de endereço como: cep, numero, bairro etc dentro de endereco-->
+      <div class="row sm-12">
+        <div class="col-md-3"
+        [ngClass]="aplicaCssErro(cep)"
+        >
+          <label for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep" name="cep" ngModel required
+          #cep="ngModel"
+          (blur)="consultaCEP(cep.value, f)"> <!--Se quiser colocar o campo no form tambem, coloca o name="cep" e depois vamos associar ao ngModel. Ela tambem criou uma variavel local chamdada #cep e associou ao ngModel para conseguir colocar as mensagens de validação -->
+
+          <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger" role="alert">
+            CEP é obrigatorio
+          </div>
+        </div>
+        <div class="col-md-3"
+        [ngClass]="aplicaCssErro(numero)"
+        >
+          <label for="numero">Numero</label>
+          <input type="text" class="form-control" id="numero" name="numero" ngModel required #numero = "ngModel">
+
+          <div class="alert alert-danger" role="alert"
+          *ngIf="!numero.valid && numero.touched">
+          Numero é obrigatorio
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="cep">Complemento</label>
+          <input type="text" class="form-control" id="complemento" name="complemento" ngModel #complemento="ngModel"> <!--Se quiser colocar o campo no form tambem, coloca o name="cep" e depois vamos associar ao ngModel. Ela tambem criou uma variavel local chamdada #cep e associou ao ngModel para conseguir colocar as mensagens de validação -->
+        </div>
+      </div>
+      <div class="col sm-12">
+        <label for="rua">Rua</label>
+        <input type="text" class="form-control" id="rua" name="rua" required ngModel #rua="ngModel">
+        <div class="alert alert-danger" role="alert"
+        *ngIf="!rua.valid && rua.touched">
+          Rua é obrigatorio
+        </div>
+      </div>
+      <div class="row sm-12">
+        <div class="col-md-5"
+        [ngClass]="aplicaCssErro(bairro)">
+          <label for="bairro">Bairro</label>
+          <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel">
+          <div *ngIf="!bairro.valid && bairro.touched" class="alert alert-danger" role="alert">
+            Bairro é obrigatorio
+          </div>
+        </div>
+        <div class="col-md-4"
+        [ngClass]="aplicaCssErro(cidade)">
+          <label for="cidade">Cidade</label>
+          <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade = "ngModel">
+
+          <div class="alert alert-danger" role="alert"
+          *ngIf="!cidade.valid && cidade.touched">
+          Cidade é obrigatorio
+          </div>
+        </div>
+        <div class="col-md-3"
+        [ngClass]="aplicaCssErro(estado)">
+          <label for="estado">Estado</label>
+          <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel">
+          <div class="alert alert-danger" role="alert"
+          *ngIf="!estado.valid && estado.touched">
+          Estado é obrigatorio
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  <button type="submit" class="btn btn-primary"
+  [disabled]="!f.valid"
+  >Submit</button> <!--Vai desabilitar o botao se o formulario estiver invalido-->
+
+  <app-form-debug [form]="f"></app-form-debug> <!--Passou essa variavel form fazendo o property binding e ele quer passar a variavel do form que é a variavel f-->
+</form>
+
+<!--Ela criou uma propriedade class.has-error com a condição se o campo não é valido e ele foi tocado, aparece o negocio vermelho. Mas tambem podia ter feito isso no css:
+.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+
+vc decide se quer usar o css ou a class
+
+o ng if vai mostrar o texto Nome é obrigatorio se o campo esta invalido e ja foi tocado
+-->

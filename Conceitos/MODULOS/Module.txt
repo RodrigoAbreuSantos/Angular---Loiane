@@ -1,0 +1,27 @@
+Module é um mecanismo que agrupa componentes, diretivas, pipes e serviços relacionados, de forma a combinar com outros modulos para criar um aplicativo 
+
+Uma aplicação Angular pode ser pensada como um quebra-cabeça. Onde cada bloco tem como objetivo fornecer uma funcionalidade ou recurso especifico.
+
+Construimos um software como se fosse um quebra cabeça e conforme esse quebra cabeça cresce, fica dificil e oneroso a sua manutenção. Por isso adotamos alguns modelos de arquitetura e contrução de software
+
+O Angular fornece uma boa maneira de organizar esses blocos de forma simples e eficaz usando modulos(tambem conhecidos como ngModules) 
+
+ANATOMIA ==> ngModule
+
+@NgModule({
+    declarations: [],
+    imports: [],
+    exports: [],
+    providers: [],
+    bootstrap: [],
+})
+
+declarations ==> serve para declarar os nossos componentes dentro daquele modulo especifico 
+
+imports ==> importa funcionalidade de outros componentes 
+
+exports ==> serve para voce exportar o seu componente 
+
+providers ==> onde utilza os services, quando quer fazer uma requisação backEnd ou outra coisa, temos que declarar nosso service no providers, para poder utilza injeção de dependencias 
+
+bootstrap ==> Só pode ser usado no componente principal. Ele serve para informar que esse componente é o app start, a parte do aplicativo que vai iniciar toda a aplicação. SÓ  USAMOS O BOOTSTRAP NP APP COMPONENT QUE É O APP PRINCIPAL

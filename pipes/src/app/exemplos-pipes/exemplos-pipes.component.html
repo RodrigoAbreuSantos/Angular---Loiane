@@ -1,0 +1,29 @@
+<h5>Exemplo de Pipes</h5>
+
+<p>Titulo: {{ livro.titulo | uppercase | camelCaseGeneratePipe}}</p> <!--EM ingles o | significa pipe, então para colocar um pipe, primeiro vc coloca | e depois coloca o nome do pipe-->
+<p>Estrelas: {{ livro.rating | number:'1.1-2'}}</p> <!--'1.1-2' significa que o numero antes da virgula vai ter uma casa e depois da virgula vai ter o numero minimo de uma casa decimal e o numero maximo de 2 casas decimais-->
+<p>Paginas: {{ livro.numeroPaginas | number}}</p>
+<p>Preço: {{ livro.preco | currency: 'BRL':true }}</p>
+<p>Data Lançamento: {{ livro.dataLancamento | date: 'dd-MM-yyyy' }}</p>
+<p>Url: {{ livro.url }}</p>
+<br>
+<p>´Livro: {{ livro | json}}</p>
+<!--O pipe tranforma um valor, e podemos mostrar esse valor transformado dentro de um template-->
+
+
+<input type="text" [(ngModel)]="filtro">
+<br><br>
+<input type="text" #novoValor>
+<br><br>
+<button (click)="addCurso(novoValor.value)">Add Curso</button>
+
+<h5>Maneira correta de usar filtro nos projetos</h5>
+<ul>
+  <li *ngFor="let liv of obterCurso()">
+    {{ liv }}
+  </li>
+</ul>
+
+
+<p>{{ valorAsync | async }}</p> <!--Promessa-->
+<p>{{ valorAsync2 | async}}</p> <!--Programação Reativa-->

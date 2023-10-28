@@ -1,0 +1,35 @@
+ng --help ==> mostra as opções de ng 
+
+ng serve ==> servidor 
+
+ng new ==> criar pasta (nome da pasta)
+
+ng build ==> vai colocar os arquivos em modo de produção, então os tudo que tiver na pasta app vai ter na pasta dist só que em mode de produção
+
+ng generate ==> gera um componente, diretiva ou qualquer coisa que vc quiser. Ex: ng generate component 
+
+ng generate component (nome do component) ==> gera um component
+
+ng generate module (nome do module) ==> gera um modulo
+
+Para colocar um component dentro de um module:
+
+    ==> ng generate component (nome do module)/(nome do component) ==> gera um modulo com o component dentro 
+
+ng generate service ==> gera um service
+
+
+ng g guard  ==> voce esta criando um guarda de rotas, sempre que voce gera um guarda ele vai peguntar qual tipo de guarda vai ser: CanActivate, CanActivateChild, CanDeactivate, CanLoad
+
+
+ng g module core --routing ==> esta criando um modulo com o nome core que tem um routing
+
+ng test ==> vai gerar um servidor para fazer os testes unitarios
+
+ng test --code--coverage ==> cobertura de testes
+
+ng g interface ==> gera uma interface 
+
+ng g d ==> cria uma diretiva, que pode ser usado em componentes para mudar o css
+
+ng g p ==> cria um pipe

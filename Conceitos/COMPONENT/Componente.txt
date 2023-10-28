@@ -1,0 +1,25 @@
+Uma aplicação angular é baseada em componentes 
+
+Quando vc quiser usar em outro template um componente, se vc não tiver modulo vc vai exportar o componente e declarar ele onde vc quiser utilizar
+
+Componentes permitem vc dividir em partes que são independentes e reutilizaveis 
+
+Componente é constituido por: Template HTML, Style(CSS) e Classe TS 
+
+Componente no HTML: 
+
+<router-outlet></router-outlet> ==> vai verificar se tem rotas
+
+Componente no Ts: 
+
+@Component ==> o componente é baseado em um decorator 
+
+selector ==> para usar em outros componente ou no index ex: 'app-root' <app-root></app-root>
+
+templateUrl ==> baseado no template html do componente
+
+styleUrl ==> baseado no template css do componente
+
+
+
+

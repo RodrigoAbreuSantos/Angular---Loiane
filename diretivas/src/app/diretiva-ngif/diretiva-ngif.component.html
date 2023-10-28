@@ -1,0 +1,47 @@
+<h1>*ngif</h1>
+
+<div *ngIf="cursos.length > 0">
+  Lista de Cursos Aqui
+</div>
+<div *ngIf="cursos.length === 0">
+  Não tem curso para serem listados
+</div>
+
+<div *ngIf="mostrarCursos">
+  Lista de Cursos Aqui
+</div>
+<div *ngIf="!mostrarCursos">
+  Não tem curso para serem listados
+</div>
+
+<button (click)="onMostrarCurso()">Mostrar ou Esconder cursos</button>
+
+<h5>hidden como alternativa</h5>
+<div [hidden]="!mostrarCursos"> <!--Se vc quiser mostrar os cursos então é true-->
+  Lista de Cursos Aqui
+</div>
+<div [hidden]="mostrarCursos"> <!--Se vc não quiser mostrar os cursos então é false-->
+  Não tem curso para serem listados
+</div>
+
+<!--Quando Utilizar o hidden ou o ngif
+
+  hidden é recomendado para arvores de elementos pequenos
+  ngif é recomendado para arvores de elementos grandes
+-->
+
+<h5>
+  Removendo o * e usando o template
+</h5>
+
+<div *ngIf="mostrarCursos">
+  Lista de Cursos Aqui
+</div>
+
+<template ngif = "mostrarCursos">
+  <div>
+    Lista de cursos aqui
+  </div>
+</template>
+
+<div template="ngIf mostrarCursos"> Lista de cursos aqui</div>

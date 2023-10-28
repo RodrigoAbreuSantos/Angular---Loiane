@@ -1,0 +1,49 @@
+Data Binding ==> É uma forma de exibir dados em seu componente HTML, nada mais que trabalhar com dados 
+
+    ==> Interpolação: {{}}
+
+    ==> Property Binding: []
+
+    ==> Event Binding: ()
+
+    ==> Two-way binding: [()] 
+
+-----------------------------------------------------------------------------------------------------------------
+Interpolação ==> A Interpolação de texto permite que voce incorpore valores dinamicos em seus modelos HTML
+
+EX: 
+    ==> Componente HTML: <h1>{{ title }}</h1>
+
+    ==> Componente TS: public title: string = "Bem vindo" 
+
+-----------------------------------------------------------------------------------------------------------------
+Property Binding ==> Ajuda a definir valores para propriedade de elementos ou diretivas HTML. Os Property Binding é caracterizado por [] recebendo valores da classe TS dentro da propriedade
+
+Ex:
+    O button tem uma propriedade chamada disable, quanto usamos essa propriedade com os [] e dentro do valor dele, quer dizer que estamos trabalhando com os dados de dentro da classe TS> por exemplo o button esta recebendo um valor de disable true, apartir desta variavel que esta dentro da classe TS
+
+    ==> Componente HTML: 
+
+        <button [disable]="disableButton">Button</button>
+        <img [src]="itemImageUrl">
+        <img src="{{ itemImageUrl }}">
+
+-----------------------------------------------------------------------------------------------------------------
+Event Binding ==> É associação de eventos que permite voce escutar e responder as ações do usuario, como pressionamentos de tecla, movimentos do mouse, cliques e toques 
+
+EX: 
+    Vc esta utilzando no html um button, este button recebe um evento click, e dentro deste click temos a função de calculo na classe TS
+    ==> Componente HTML:
+        <button (click)="calc()">Button</button>
+
+-----------------------------------------------------------------------------------------------------------------
+Two-way binding ==> É a união do property binding com o event-binding. Use para ouvir eventos e atualizar valores simultaneamente entre os componente pai e filho 
+
+EX: 
+
+    ==> Componente HTML:
+        <input [(ngModel)]="nome">
+        <span>{{ nome }}</span>
+
+        Componente TS:
+            public nome: string = "Denner";

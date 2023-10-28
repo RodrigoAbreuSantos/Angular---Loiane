@@ -1,0 +1,20 @@
+o teste unitario é uma verificação feita com uma pequena porção de codigo, uma unidade de um software.
+
+No caso testamos funcionalidades do sistema, como por exemplo: uma função ou um metodo da classe
+
+É diferente do teste geral, que se dedica a testar o fluxo do sistema, com as principais funcionalidades
+
+No unitario cada parte do sistema ganha uma atenção devida e detalhada, de modo a otimizar o processo de identificaçã de erros 
+
+Vantagens de usar testes unitarios: 
+    ==> Menos erros 
+    ==> Satisfação dos clientes 
+    ==> Documentação 
+    ==> Redução de custos com testes manuais 
+    
+
+Karma é um test runner Java Script que roda em node.js. É muito adequado para testar Angular ou qualquer outro projeto Java Script. Karma é usado para executar testes usando um dos muitos conjuntos de testes populares de Java Script (Jasmine, Mocha, QUnit, etc) 
+
+
+Jasmine dentro do Angular: 
+    ==> É um framework para escrever testes para codigo Java Script. Ele é independente de navegador web

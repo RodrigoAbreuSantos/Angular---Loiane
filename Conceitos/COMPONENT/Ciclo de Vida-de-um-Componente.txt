@@ -1,0 +1,120 @@
+O ciclo de vida no Angular é composto por uma série de eventos que ocorrem durante o ciclo de vida de um componente ou diretiva. Esses eventos permitem que você controle o comportamento e a execução de código em diferentes estágios da vida de um componente. Os principais métodos do ciclo de vida no Angular são:
+
+Eventos dentro de uma classe: 
+    ==> ngOnInit()
+    ==> ngOnChanges()
+    ==> ngDoCheck()
+        ==> ngAfterContentInit()
+        ==> ngAfterContentChecked()
+        ==> ngAfterViewInit()
+        ==> ngAfterViewChecked()
+    ==> ngOnDestroy()
+
+    
+1. ngOnInit
+
+   - Para que serve: É chamado uma única vez após a inicialização do componente.
+
+   - Explicação: Use este método para realizar inicializações que precisam ocorrer assim que o componente é criado, como buscar dados iniciais de um serviço.
+
+
+
+2. ngOnChanges
+
+   - Para que serve: Este método é chamado sempre que um valor de entrada (`@Input`) de um componente muda.
+
+   - Explicação: É útil quando você precisa reagir a mudanças nos dados de entrada e atualizar o estado interno do componente com base nesses dados.
+
+
+
+3. ngDoCheck
+
+   - Para que serve: É chamado durante cada ciclo de detecção de mudanças.
+
+   - Explicação: É útil quando você precisa realizar verificações manuais para detectar mudanças que não são detectadas automaticamente pelo Angular, como alterações em objetos ou arrays.
+
+
+
+4. ngAfterContentInit
+
+   - Para que serve: É chamado depois que o Angular projeta o conteúdo na visão do componente (dentro das tags `<ng-content>`).
+
+   - Explicação: Use este método quando precisar interagir com elementos projetados no componente.
+
+
+
+5. ngAfterContentChecked
+
+   - Para que serve: É chamado após cada verificação do conteúdo projetado.
+
+   - Explicação: Útil quando você precisa realizar ações após a verificação do conteúdo projetado, como atualizar cálculos com base nesse conteúdo.
+
+
+
+6. ngAfterViewInit
+
+   - Para que serve: É chamado depois que o Angular inicializa as visualizações do componente e as visualizações filhas.
+
+   - Explicação: Use este método quando precisar interagir com elementos do DOM após a inicialização da visualização.
+
+
+
+7. ngAfterViewChecked
+
+   - Para que serve: É chamado após cada verificação da visualização do componente.
+
+   - Explicação: Útil para realizar ações após a verificação da visualização, como atualizar informações com base no estado atual da visualização.
+
+
+
+8. ngOnDestroy
+
+   - Para que serve: É chamado antes de um componente ser destruído.
+
+   - Explicação: Útil para liberar recursos, cancelar assinaturas e executar tarefas de limpeza antes de um componente ser removido.
+
+
+
+Entender e utilizar esses métodos do ciclo de vida é fundamental para controlar o comportamento e o estado dos seus componentes Angular de forma eficaz.
+
+
+Ciclo de vida ==> cada componente tem um ciclo de vida, existem 8 estagios de ciclo de vida de um component
+
+Como o componente é uma classe Ts cada component deve ter um constructor. O constructor é executado primeiro antes da execução de qualquer outro evento de ciclo de vida 
+
+Eventos dentro de uma classe: 
+    ==> ngOnInit()
+    ==> ngOnChanges()
+    ==> ngDoCheck()
+        ==> ngAfterContentInit()
+        ==> ngAfterContentChecked()
+        ==> ngAfterViewInit()
+        ==> ngAfterViewChecked()
+    ==> ngOnDestroy()
+
+@Input() ==> Entrada de dados. Dados de fora, dados externos do nosso componente. Recebe dados de fora de outro componente
+
+
+ngOnInit() ==> quando inicia a aplicação. Este evento é inicializado apos o Angular exibir pela primeira vez as propriedades vinculadas aos dados ou quando o componente foi inicializado no constructor. Este evento é usado principalmente para inicializar dados em um componente
+
+
+ngOnChanges() ==> é executado sempre que um valor de um controle de entrada dentro do componente é alterado. Sempre que um componente recebe um dado atraves do @Input() o ngOnChanges() é invocado 
+
+
+ngDoCheck() ==> Todos dentro desse evento acontece depois que o ngDoCheck passa na sua app. É disparado sempre que as propriedades de entrada se um componente são verificadas. Sempre que um componente se inicializa e verifica os valores ele vai ser chamado
+
+
+ngAfterContentInit() ==> é executado quando o Angular realiza qualquer projeção de conteudo nas vizualizações do componente. Então sempre que mostramos alguma coisa ele vai chamar o ngAfterContentInit
+
+
+ngAfterContentChecked() ==> é executado sempre que o conteudo do componente é verificado pelo mecanismo de detecção de alteração do Angular. Então sempre que tem alguma alteração no componente, por exemplo vc vai fazer um calculo 1 + 1 = 2 ele vai verificar isso, então esse evento é invocado
+
+
+ngAfterViewInit() ==> é executado quando a vizualização do componente foi totalmente iniciada. Assim quando o nosso component foi inicializado, foi carregado tudo o que precisa mostrar. Por exemplo quando aparecer tudo vc quer que mostre a tela do mario boss,e ntão vc consegue fazer isso 
+
+
+ngAfterViewChecked() ==> é executado toda vez que a vizualização de um determinado componente foi verificada pelo algoritmo de detecção de alterações do Angular. Vamos ter o componente pai e se os componente filhos tiver alguma alteração ele vai ser invocado
+ 
+
+ngOnDestroy() => é executado quando destruirmos alguma coisa, 
+

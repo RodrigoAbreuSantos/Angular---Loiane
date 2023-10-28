@@ -1,0 +1,26 @@
+É uma forma de trabalhar com formularios aqui no Angular. Essa é a segunda forma, tem 2 formas o template form e reactive forms
+
+para utilizar precisa importar o: import { ReactiveFormsModule } from '@angular/forms';
+
+No componente vc importa o FormBuilder e instancia ele dentro do constructor para assim vc poder utilzar isso e tambem tem que importar o FormGroup que é meio que um grupo de formulario
+
+public cadastroForm: FormGroup = this.formBuilder.group({
+    firsName: ['']
+  })
+
+Isso é uma propriedade do tipo FormGroup que vai receber um formulario passando dentro deles um group ou melhor passando seus campos
+-----------------------------------------------------------------------------------------------------------------
+
+<form [formGroup]="cadastroForm">
+  <input type="text" formControlName="firstName">
+</form>
+
+o formGroup é do tipo property binding que vai pegar a propriedade cadastroForm la da classe TS, e no input vc ta falando que ele vai ser la na classe TS o firstName
+
+
+{{ cadastroForm.get('firstName')?.value }} ==> aqui vc ta pegando o valor do campo que tem o formControlName="firsName" que é referenciado dentro da propriedade cadastroForm la na classe TS
+
+firstName: ['', Validators.required], ==> aqui vc ta colocando as validações no back para usar no front 
+
+
+

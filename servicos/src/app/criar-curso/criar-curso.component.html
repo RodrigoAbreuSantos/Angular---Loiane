@@ -1,0 +1,12 @@
+<h5>Lista de cursos</h5>
+<ul>
+  <li *ngFor="let curso of cursos">
+    {{ curso }}
+  </li>
+</ul>
+
+<input type="text" #cursoInput> <!--Para pegar o valor do input vc cria uma variavel local, então foi criado o #cursoInput para pegar o valor do input, depois vc passa essa variavel local dentro do metodo que esta sendo utilizado no caso aqui vai ser onAddCurso e adiciona o value, para não fazer referencia ao proprio componente html-->
+<button (click)="onAddCurso(cursoInput.value)">Add Curso</button>
+
+
+<app-receber-curso-criado></app-receber-curso-criado>

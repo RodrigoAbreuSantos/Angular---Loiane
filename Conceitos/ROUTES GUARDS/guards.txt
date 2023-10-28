@@ -1,0 +1,17 @@
+Por exemplo, restringimos o acesso de um usuario a area de membros antes de serem autenticados por meio do sistema de login
+
+Ou se um usuario tiver alterações pendentes que precisam ser salvas antes de navegar para fora de um componente de opções 
+
+Tipos de Guardas de Rota: 
+
+    ==> CanActivate: decide se uma rota (ou componente) pode ser ativada, como um sistema de login. Então é para entrar na rota 
+
+    ==> CanDeactivate: decide se um usuario pode navegar para longe de uma rota (ou componente), como solicitar a confirmações de alterações pendentes. Como por exemplo vc digita um formulari, mas esquece um campo e na hora de submter vc não vai conseguir sair da rota por causa do CanDeactivate. Então é para sair da rota
+
+    ==> CanLoad: verifica se pode ou não carregar o modulo especifico. Geralmente usado com o Lazy-Load. 
+
+    CanActivateChild: é semelhante a CanActivate, mas se aplica a rota aninhadas, ou seja as rotas filhas
+
+Os routes guards do Angular nos permitem controlar a acessibilidade de uma rota com base nas condições fornecidas na implementação de um serviço 
+
+Basicamente com os guards voce consegue controlar o acesso autorizado de determinada rota ou adicionar alguma outra logica para acesso

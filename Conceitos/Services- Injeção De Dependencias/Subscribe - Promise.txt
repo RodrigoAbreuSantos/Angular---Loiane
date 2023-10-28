@@ -1,0 +1,6 @@
+Subscribe ==> Serve para se inscrever em uma funcionalidade como se fosse uma promise, ele não é uma promessa, mas ele fica escutando eventos que podem estar acontecendo. 
+
+Promise ==> A promise espera uma promessa faz o que tem que fazer e morre, ela retorna a res ou reject
+
+
+Diferença entre Subscribe e Promise ==> O Subscribe fica escutando ate receber um sucess ja a promise recebe um sucess ou reject e morre

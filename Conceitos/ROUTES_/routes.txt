@@ -1,0 +1,77 @@
+path: "", component: , pathMatch: 'full' 
+
+path ==> caminho 
+
+component ==> a rota do path vai levar para o component
+
+pathMatch="full" ==> significa que tudo dessa rota pertenece a rota que esta no path 
+
+rota coringa e redirectTo ==> path: '**', redirectTo: "404". Quando o user digita a rota errado ele vai cair na rota 404
+
+<router-outlet></router-outlet> ==> vai mostrar todos os nossos arquivos por rota
+
+routerLink="['/'] ==> vai levar para a rota que vc clicar 
+
+routerLinkActive ==> quando a rota estiver ativa ele vai colocar uma classe do css. 
+Ex: [routerLinkActive]="['active']
+
+routerLinkActiveOptions ==> tem que ser exatamente igual a rota
+
+parametros nas rotas ==> para vc colocar parametros nas rotas, como por exemplo /sobre/:id/:username vc precisa fazer isso: constructor(private activateRoute: ActivatedRoute){}
+
+ngOnInit(): void {
+      this.activateRoute.params.subscribe(
+        {
+          next: (res) => console.log(res)
+        }
+      )
+  }
+
+Aqui vc ta fazendo a instancia se inscrever no parametro que esta vindo na rota
+
+this.activateRoute.params ==> vai pegar os parametros 
+
+this.activateRoute.queryParams ==> vai pegar os parametros apartir do ?. Ex: ?nome=123&sobrenome=teste 
+
+Então o params vai pegar os parametros da rota, e o queryParams vai pegar de acordo com a ?
+
+
+Redirecionamento com TS ==> primeiro vc instancia a classe Router. private route: Router 
+
+navigate ==> usa para navegações internas 
+navigateUrl ==> quando vc for para outra pagina
+
+Rotas Filhas ==> 
+
+{ path: "sobre", component: SobreComponent, children: [
+    {
+      path: "/:id/:username", component: SobreComponent
+    }
+  ] },
+
+Tem a rota pai que é o sobre e tem a rota filha que é /:id/:username
+
+Lazy Loading ==> Quando esta na rota principal é forRoot(routes). Quando for outro arquivo de rotas é forChild(routes)
+
+const routes: Routes = [
+  { path: '', component: HomeComponent}
+];
+
+arquivo da rota filha que é o forChild 
+
+
+const routes: Routes = [
+  { path: "", component: HomeComponent, pathMatch: 'full' },
+  { path: "sobre", component: SobreComponent, children: [
+    { path: ':id/:username', component: SobreComponent}
+  ]
+  },
+  { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard-routing-module').then( m => m.DashboardRoutingModule)},
+  { path: "404", component: PageErrorComponent },
+  {path: '**', redirectTo: "404"}
+];
+
+arquivo da rota pai que é o forRoot. Para vc pegar a rota filha de outro arquivo vc tem que usar o loadChildren
+
+
+useHash ==> 

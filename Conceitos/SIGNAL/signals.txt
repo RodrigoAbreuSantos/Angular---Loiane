@@ -1,0 +1,3 @@
+é uma especie de encapsulamento que envolve um valor, e tem a capacidade de notificar os consumidores interessados sempre que esse valor sofre alterações 
+
+signals tem a flexibilidade de abrigar uma ampla gama de valores, desde tipos primitivos simples ate estruturas de dados complexas. A obtenção do valor de um "signal" é sempre realizada por meio de uma função "getter", o que permite ao Angular rastrear seu uso e monitorar as mudanças que possam ocorrer  

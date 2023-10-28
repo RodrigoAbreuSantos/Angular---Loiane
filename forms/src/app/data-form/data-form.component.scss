@@ -1,0 +1,36 @@
+/*
+.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+*/
+#btn
+{
+  margin-left: 10px;
+}
+#nome.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#email.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#cep.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#numero.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#rua.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#bairro.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#cidade.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#estado.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}
+#termo.ng-invalid.ng-touched:not(form){
+  border: 1px solid red;
+}

@@ -1,0 +1,34 @@
+<form #form="ngForm">
+  <label for="nome">Nome:
+    <input type="text" name="nome" ngModel>
+  </label>
+</form>
+-----------------------------------------------------------------------------------------------------------------Apartir do template #form que recebe ngForm, então vc esta recebendo os valores de ngForm e o form.value vc ta pegando todos os valores que tem no ngForm.
+
+Então vc ta pegando o valor do ngForm que tem a chave nome que é o name="nome" e tem o ngModel que vai fazer a reatividade
+-----------------------------------------------------------------------------------------------------------------
+
+ngForm + input text ==> para pegar a chave do campo usa o name o ngModel é para fazer a reatividade
+-----------------------------------------------------------------------------------------------------------------
+
+ngForm + input radio ==> para pegar a chave do campo usa o name, mas para pegar o valor vc coloca o value, o ngModel é para fazer a reatividade
+-----------------------------------------------------------------------------------------------------------------
+
+ngForm + input checkbox ==> para pegar a chave usa o name, o ngModel é para fazer a reatividade
+-----------------------------------------------------------------------------------------------------------------
+
+ngForm + Selected ==> a chave é o name e as opçoes vc pode fazer um ngFor e usar interpolação para pegar os valores, se vc usar [value]="item.comida" vc vai pegar apenas o valor, mas se vc usar [ngValue]="item" vc vai pegar o valor e a chave, então seria assim: "comidas": { "comida": "X-Salada" } vc não usou o [value]="item" porque isso não traz a chave e o valor, traz apenas object object. Então o [value] não aceita objetos do ts mas o ngValue aceita
+-----------------------------------------------------------------------------------------------------------------
+
+ngForm + Errors ==> o ngForm tem o valique vc pode acessar assim: #form="ngForm". {{ form.valid }} o valid ve se o form esta valido, então se vc colocar um required em um campo e não colocar valor no campo e ver o valid depois, vc vai ver que ele vai estar falso
+
+O ngForm + errors tem 3 principais: 
+
+    ==> valid: vai ser de acordo com as validações desse campo
+    ==> dirty: 
+    ==> touched: quando vc clica pela primeira vez no form e depois desclica 
+
+#nome="ngModel" [ngModel]="nome.value" vc tem que fazer isso para pegar a referencia do campo e trabalhar com os elementos. Isso faz com que vc possa fazer isso: {{ nome.valid }}
+-----------------------------------------------------------------------------------------------------------------
+
+ngForm + Submit form ==> <button [disabled]="!form.valid">Enviar Dados</button>. Vai desabilitar o botão quando o form for invalido

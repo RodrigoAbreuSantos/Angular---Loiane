@@ -1,0 +1,28 @@
+As diretivas são classes que adicionam comportamento adicional aos elementos em seus aplicativos Angular. Com as  diretivas integradas do Angular, voce pode gerenciar formularios, listas, estilos e o que os usuarios veem 
+
+As diretivas são separadas em 2 formas, como: 
+    ==> Diretivas de atributo 
+    ==> Diretivas estruturais 
+
+
+Diretivas de atributo ==> Alteram a aparencia ou o comportamento de um elemento, componente ou outra diretiva 
+
+    ==> NgClass: Adiciona e remove um conjunto de classes CSS. Conseguimos mudar a classe do CSS ali no HMTL. Por exemplo vc fez uma validação que quando uma pessoa clica no botão ele verifica se os pontos estão corretos, se não estiver correto muda a classe para vermelho por exemplo
+
+    == NgStyle: Adiciona e remove um conjunto de estilos HTML. Praticamente a mesma coisa do NgClass, conseguimos manipular o DOM com o NgClass e o NgStyle
+
+    ==> NgModel: Adiciona vinculação de dados bidirecional a um elemento de formulario HTML. Adiciona dados vinculados a um formulario. TUDO QUE VC DIGITAR NO FORM ELE VAI PRO TS NA NOSSA CLASSE VAI EDITAR O VALOR LA E VAI RETRONAR O VALOR QUE COLOCAMOS NO INPUT. ENTÃO FUNCIONA TANTO NO TS MANDANDO PARA O HTML, QUANTO DO HTML ENVIANDO PRO TS
+
+    ==> NgTemplate: Cria um atributo html limpo, ele é um elemento html que vai ajuar a fazer verificações com ngIf antes do DOM ser carregado. 
+
+    ==> Pipes: Ajuda a modificar algumas coisas. É usado nas interpolações, ngFor etc. O pipe é esse sinal: |
+
+
+Diretivas Estruturais ==> Moldam ou remodelam a estrutura do DOM, adicionando, removendo e manipulando os elementos do host aos quais estão anexados 
+
+    ==> NgIf: Condicionalmente cria ou descarta visualizações do modelo 
+
+    ==> NgFor: Repete um nó para cada item de uma lista 
+
+    ==> NgSwitch: Um conjunto de diretivas que alternam entre visões alternativas 
+

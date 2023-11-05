@@ -1,0 +1,13 @@
+Primeiramente cria uma pasta server e da cd para entrar nela, então:
+
+    --> cd server
+
+Depois dentro do server da um npm -y:
+
+    --> npm init -y 
+
+Agora baixa o express:
+
+    --> npm i -save express body-parser connect-multiparty cors
+
+Na pasta server criou a pasta SRC e dentro dela colocou o index.js 

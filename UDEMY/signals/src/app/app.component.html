@@ -1,0 +1,14 @@
+<p>{{ firstName() }} {{ lastName() }}</p>
+<p>FullName: {{ fullName() }}</p>
+
+<ul>
+  <li *ngFor="let item of array()">{{ item }}</li>
+</ul>
+
+<button (click)="updateName()">Trocar Nome</button>
+
+<br>
+
+<button (click)="updateArray()">Trocar Array</button>
+
+<router-outlet></router-outlet>

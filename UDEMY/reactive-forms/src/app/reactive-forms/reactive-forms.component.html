@@ -1,0 +1,44 @@
+<form [formGroup]="cadastroForm" (submit)="submitForm()">
+  <input type="text" formControlName="firstName">
+
+  <span *ngIf="cadastroForm.get('firstName')?.errors" class="alert">
+    Favor Adicionar o firstName
+  </span>
+
+  {{ cadastroForm.get('firstName')?.value }}
+
+  <br>
+  <input type="text" formControlName="lastName">
+  <span class="alert" *ngIf="cadastroForm.get('lastName')?.errors">
+    Favor adicionar o lastName
+  </span>
+  <br>
+
+  <br>
+  <input type="email" formControlName="email">
+  <span class="alert" *ngIf="cadastroForm.get('email')?.errors">
+    Favor adicionar o email
+  </span>
+  <br>
+
+  <h3>FirstName</h3>
+  {{ cadastroForm.get('firstName')?.errors | json }}
+  {{ cadastroForm.get('firstName')?.dirty }}
+  {{ cadastroForm.get('firstName')?.touched }}
+  <br>
+
+  <h3>LastName</h3>
+  {{ cadastroForm.get('lastName')?.errors | json }}
+  {{ cadastroForm.get('lastName')?.dirty }}
+  {{ cadastroForm.get('lastName')?.touched }}
+
+  <br>
+
+  <h3>Email</h3>
+  {{ cadastroForm.get('email')?.errors | json }}
+  {{ cadastroForm.get('email')?.dirty }}
+  {{ cadastroForm.get('email')?.touched }}
+
+  <br>
+  <button [disabled]="!cadastroForm.valid">Enviar Dados</button>
+</form>

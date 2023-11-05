@@ -1,0 +1,41 @@
+<h1 style="text-align: center;">DIRETIVAS ESTRUTURAIS</h1>
+<h1>Diretivas Estruturais</h1>
+<h2>NgIf</h2>
+<p *ngIf="condition; else conditionElse">Condição vai sumir em 4 Segundos</p>
+<ng-template #conditionElse>
+  <p>
+     Vai voltar em 4 Segundos
+  </p>
+</ng-template>
+
+<p *ngIf="conditionClick">True</p>
+<p *ngIf="!conditionClick" >False</p>
+
+<button (click)="onClick()" >ConditionClick</button>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+<h2>NgFor</h2>
+
+<ul>
+  <li *ngFor="let item of list; let i = index" (click)="onClickEventList(i)" >{{ i }}: {{ item.nome }} - {{ item.idade }}</li>
+</ul>
+
+<button (click)="onClickAddList()" >Add</button>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+<h2>NgSwitch</h2>
+
+<input type="text" [(ngModel)]="nome">
+<div [ngSwitch]="nome" >
+  <p *ngSwitchCase="'Rodrigo'">
+    Rodrigo
+  </p>
+  <p *ngSwitchCase="'Nayara'">
+    Nayara
+  </p>
+  <p *ngSwitchCase="'Julia'">
+    Julia
+  </p>
+  <p *ngSwitchDefault>
+    Qualquer Nome
+  </p>
+
+</div>

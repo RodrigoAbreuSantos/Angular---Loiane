@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" > <!--vai fazer referencia ao form como um todo. O angular esta advinhando o que estamos colocando nesse formulario atraves dessa diretiva. O #f esta sendo associado O #f esta sendo associado ao controle de formulario do Angular e o evento de submit nos estamos passando essa variavel f, que é a variavel que estamos recebendo no metodo onSubmit la no template-form.component.ts
+<form #formReferencia="ngForm" (ngSubmit)="onSubmit(formReferencia)" > <!--vai fazer referencia ao form como um todo. O angular esta advinhando o que estamos colocando nesse formulario atraves dessa diretiva. O #f esta sendo associado O #f esta sendo associado ao controle de formulario do Angular e o evento de submit nos estamos passando essa variavel f, que é a variavel que estamos recebendo no metodo onSubmit la no template-form.component.ts
 -->
   <div class="row mb-3"
   [ngClass]="aplicaCssErro(nome)"
@@ -11,14 +11,15 @@
       <div class="col-sm-12">
         <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome"
         [(ngModel)]="usuario.nome" required #nome="ngModel">
-        <!--<div>
-          {{ nome.className }}
-        </div>-->
-        <!--<app-campo-control-erro [mostrarErro]="verificaValidTouched(nome)" msgErro="Nome é obrigatorio"></app-campo-control-erro>-->
         <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert"> <!--Se o nome for invalido e o nome foi tocado vai mostrar o Nome obrigatorio-->
           Nome é obrigatorio
         </div>
       </div>
+        <!--<div>
+          {{ nome.className }}
+        </div>-->
+        <!--<app-campo-control-erro [mostrarErro]="verificaValidTouched(nome)" msgErro="Nome é obrigatorio"></app-campo-control-erro>-->
+
     <div id="emailHelp" class="form-text"></div>
   </div>
   <div class="row mb-3" [ngClass]="aplicaCssErro(email)">
@@ -33,6 +34,9 @@
         </div>
       </div>
     </div>
+
+
+    
     <div ngModelGroup="endereco"> <!--Agrupando todos os dados de endereço como: cep, numero, bairro etc dentro de endereco-->
       <div class="row sm-12">
         <div class="col-md-3"
@@ -41,7 +45,7 @@
           <label for="cep">CEP</label>
           <input type="text" class="form-control" id="cep" name="cep" ngModel required
           #cep="ngModel"
-          (blur)="consultaCEP(cep.value, f)"> <!--Se quiser colocar o campo no form tambem, coloca o name="cep" e depois vamos associar ao ngModel. Ela tambem criou uma variavel local chamdada #cep e associou ao ngModel para conseguir colocar as mensagens de validação -->
+          (blur)="consultaCEP(cep.value, formReferencia)"> <!--Se quiser colocar o campo no form tambem, coloca o name="cep" e depois vamos associar ao ngModel. Ela tambem criou uma variavel local chamdada #cep e associou ao ngModel para conseguir colocar as mensagens de validação -->
 
           <div *ngIf="!cep.valid && cep.touched" class="alert alert-danger" role="alert">
             CEP é obrigatorio
@@ -103,10 +107,10 @@
     </div>
     <br>
   <button type="submit" class="btn btn-primary"
-  [disabled]="!f.valid"
+  [disabled]="!formReferencia.valid"
   >Submit</button> <!--Vai desabilitar o botao se o formulario estiver invalido-->
 
-  <app-form-debug [form]="f"></app-form-debug> <!--Passou essa variavel form fazendo o property binding e ele quer passar a variavel do form que é a variavel f-->
+  <app-form-debug [form]="formReferencia"></app-form-debug> <!--Passou essa variavel form fazendo o property binding e ele quer passar a variavel do form que é a variavel f-->
 </form>
 
 <!--Ela criou uma propriedade class.has-error com a condição se o campo não é valido e ele foi tocado, aparece o negocio vermelho. Mas tambem podia ter feito isso no css:

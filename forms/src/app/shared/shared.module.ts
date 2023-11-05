@@ -10,10 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [FormDebugComponent, CampoControlErroComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     HttpClientModule
   ],
   exports: [FormDebugComponent, CampoControlErroComponent], //como queremos utlizar estes componentes em outros modulos, precisamos fazer um export
-  providers: [DropdownService]
+  providers: []
 })
 export class SharedModule { }

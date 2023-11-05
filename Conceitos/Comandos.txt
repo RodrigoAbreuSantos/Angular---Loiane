@@ -33,3 +33,10 @@ ng g interface ==> gera uma interface
 ng g d ==> cria uma diretiva, que pode ser usado em componentes para mudar o css
 
 ng g p ==> cria um pipe
+
+--routing ==> cria um routing para a pasta que vc quer 
+
+
+npm i -g json-server ==> simula um back-end
+
+json-server --watch db.json

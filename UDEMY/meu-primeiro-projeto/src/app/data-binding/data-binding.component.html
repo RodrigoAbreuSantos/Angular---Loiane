@@ -1,0 +1,32 @@
+<h1 style="text-align: center;">DATA BINDING</h1>
+<h1>Interpolação</h1>
+<p>{{ nome }} tem {{ idade }} anos</p>
+<p>{{ nome }} tem mais de 17 anos?</p>
+<p>{{ idade > 17 }}</p>
+<p>Quanto é {{ idade }} + 1?</p>
+<p>{{ idade + 1 }}</p>
+<p>{{ idade + maisUM }}</p>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<h1>Property Binding</h1>
+<button disabled="true">Without Property Binding</button>
+
+<button [disabled]="checkedDisable">With Property Binding</button>
+<img [src]="imgSrc" [title]="imgTitle">
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<h1>Event Binding</h1>
+
+<button (click)="alerta('Event Binding')" >Evento</button>
+<br>
+<button (click)="alertaInfo($event)" >Evento</button>
+
+<div style="background: red; width: 300px; height: 300px;" (mousemove)="mouseMoveTest($event)"></div>
+{{ position.x }} - {{ position.y }}
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<h1>Two-way Binding</h1>
+
+<input [(ngModel)]="nome">
+
+<p> {{ nome }}</p>

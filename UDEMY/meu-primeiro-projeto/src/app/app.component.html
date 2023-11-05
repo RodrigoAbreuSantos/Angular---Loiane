@@ -1,0 +1,47 @@
+<h1 style="text-align: center;">COMPONENTE E CICLO DE VIDA</h1>
+<h1> Bem Vindo </h1>
+<app-title title="Ola Mundo" *ngIf="destruir" ></app-title>
+<button (click)="destruirComponent()">Destruir Componente</button>
+<h1> {{valor}} </h1>
+<button (click)="adicionar()">Adicionar</button>
+<app-title title="Ola Mundo"></app-title><!--Era BemVindo, so que usamos o @Input para mudar-->
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-data-binding></app-data-binding>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-diretivas-estruturais></app-diretivas-estruturais>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-diretivas-atributos>
+  <h1 style="text-align: center;">Aulas de Diretivas Atributo</h1>
+  <h2 style="text-align: center;" class="ngcontentFinal">Final da Aula</h2>
+  <hr>
+</app-diretivas-atributos>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-new-component></app-new-component>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-input [contador]="addValue"></app-input>
+<br>
+<button (click)="add()">Add</button>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<ng-template [ngIf]="getDados">
+  <h1>{{ getDados.nome }}</h1>
+  <h1>{{ getDados.idade }}</h1>
+</ng-template>
+
+<app-output (enviarDados)="setDados($event)"></app-output>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-food-list></app-food-list>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-food-add></app-food-add>
+<h1>-----------------------------------------------------------------------------------------------------------------------------</h1>
+
+<app-forms></app-forms>
+
+<router-outlet></router-outlet>

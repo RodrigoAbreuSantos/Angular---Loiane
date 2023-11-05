@@ -14,11 +14,7 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 })
 export class DataFormComponent implements OnInit{
 
-  formulario: any = FormGroup;
-
-  //estados: EstadoBr[] | undefined; //nossa variavel estado vai ser um array de EstadoBr. Ela vai guardar os estados que esta sendo chamado no ngOnInit e foi transformado em json no getEstadosBR
-
-  estados: any = Observable<EstadoBr>; // vc pode utulizar ou subscribe ou | aysinc, mas de preferencia para o pipe aysinc de informações que estão vindo de nosso template 
+  estados: any = Observable<EstadoBr>; // vc pode utulizar ou subscribe ou | aysinc, mas de preferencia para o pipe aysinc de informações que estão vindo de nosso template
 
   cargos: any = [];
 
@@ -35,40 +31,7 @@ export class DataFormComponent implements OnInit{
     private cepService: ConsultaCepService
     ){ }
 
-  ngOnInit(): void { //é um evento que é disparado sempre que o componente for inicializado
-
-    //this.estados = this.dropDown.getEstadosBR(); //não vamos fazer o subscribe aqui, o pipe aysinc automaticamente faz o subscribe para gente e assim que o componente for destruido ele tambem faz o unsubscribe, assim não precisando fazer manualmente 
-
-    //O PIPE AYSINC da erro, então é melhor usar o subscribe 
-
-    this.cargos = this.dropDown.getCargos()
-
-    
-    this.dropDown.getEstadosBR().subscribe((dados: any) => {
-      this.estados = dados.UF
-      console.log(dados.UF)
-    });
-
-    this.tecnologias = this.dropDown.getTecnologias();
-
-    this.newsletterOp = this.dropDown.getNewsletter();
-
-    
-    //no ngOnInit vamos pegar o DropDownService e vamos obter a lista de estados br, a gente precisa ainda se inscrever, porque o http.get que temos dentro do metodo getEstadosBr no serviço DropDownService vai retornar um observable ou uma promisse. Então não é apenas fazer a chamada, no caso do observable precisamos nos inscrever 
-
-
-
-
-    /*this.formulario = new FormGroup({
-      nome: new FormControl(null), // se vc quiser que o valor incial tenha 'Rodrigo' vc coloca isso, mais se vc quiser que não tenha valor incial coloca null
-      email: new FormControl(null)
-      endereco = new FormGroup({
-        cep = new FormControl(null),
-        numero = new FormControl(null)
-      })
-    });*/ //Esse é a primeira forma de criar formularios com datadriven a outra forma é usando formBuilder
-
-    this.formulario = this.formBuilder.group({
+    public formulario: FormGroup | any = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]], //dentro de cada form control, ou seja dentro de cada campo de formulario podemos passar um segundo parametro e esses segundos sao justamente as validações
       email: [null, [Validators.required, Validators.email]],
       cofirmarEmail: [null, [Validators.required]],//this.equalsTo('email') //como o email tem 2 validações usa o array []
@@ -91,6 +54,24 @@ export class DataFormComponent implements OnInit{
       frameworks: this.buildFrameworks()
     });
 
+
+  ngOnInit(): void { //é um evento que é disparado sempre que o componente for inicializado
+
+
+
+
+    this.cargos = this.dropDown.getCargos()
+
+
+    this.dropDown.getEstadosBR().subscribe((dados: any) => {
+      this.estados = dados.UF
+      console.log(dados.UF)
+    });
+
+    this.tecnologias = this.dropDown.getTecnologias();
+
+    this.newsletterOp = this.dropDown.getNewsletter();
+
     console.log(this.formulario.get('endereco.cep'));
 
     // tem 2 jeitos de criar um formualrio reativo. O primeiro é criando uma instancia para o form e para o campo e o outro é usando formBuilder
@@ -108,7 +89,7 @@ export class DataFormComponent implements OnInit{
         .filter((v: any) => v !== null)
     });
 
-    console.log(valueSubmit); // vai mostrar o resultado depois que vc clica no submit 
+    console.log(valueSubmit); // vai mostrar o resultado depois que vc clica no submit
 
     //A parte de formulario que esta dentro do valueSubmit ela quer trocar cada true ou false e mandar apenas os que são true pro servidor, mas com nome do framework. Entao no valueSubmit vai fazer outra copia e vai fazer o replace apenas no framework. Vamos iterar cada valor que ta no form framework false false false. Entao vamos acessar o valueSubmit.framwork que ja é o valor. O map pode recerber o valor que foi o que utilizamos antes, mas ele pode receber tambem o indice e nesse caso vai retornar se o valor for true vamos acessar o this.framework que é o nosso array e vamos pegar o valor dele. Senao retorna null. Mas tambem vamos utilizar o filter que é um outro metodo do array que vai filtar o valor  e vai pegar apenas os valores que são diferentes de null
 
@@ -119,7 +100,8 @@ export class DataFormComponent implements OnInit{
        .subscribe((dados: any) =>{
          console.log(dados);
          //reseta form
-         this.formulario.reset(); // quando vc faz o submit os campos vao ser resetados, ou seja não vao ter mais nenhuma informação
+         // quando vc faz o submit os campos vao ser resetados, ou seja não vao ter mais nenhuma informação
+         this.resetar()
         },
         (error: any) => alert("Erro") // dentro do subscribe vc tambem poderia colocar um teste de erro, que se der erro vai alertar
          ); //aqui é onde recebemos a resposta do servidor usando o subscribe
@@ -158,12 +140,12 @@ export class DataFormComponent implements OnInit{
 
   verificaValidTouched(campo: any){
 
-   return !this.formulario.get(campo).valid && (this.formulario.get(campo).touched || this.formulario.get(campo).dirty); //o metodo get passando o nome do campo vai retornar a instancia do formControl que é cada campo do form
+   return this.formulario.get(campo).valid && (this.formulario.get(campo).touched || this.formulario.get(campo).dirty); //o metodo get passando o nome do campo vai retornar a instancia do formControl que é cada campo do form
 
    // o return vai retornar se o campo do forumulario não for valido e tocado
   }
 
-  aplicaCssErro(campo: any){
+  aplicaCssErro(campo: string){
     return {
       'has-error': this.verificaValidTouched(campo),
       'has-feedback': this.verificaValidTouched(campo)
@@ -239,9 +221,9 @@ export class DataFormComponent implements OnInit{
     const values = this.frameworks.map((v: any) => new FormControl(false)); // o map vai transformar um valor em algum outro valor. Então para cada valor que existir no array de frameworks vamos ter um array novo que vai ser
 
     return this.formBuilder.array(values); // (values. this.frameworks.requiredMinCheckbox(1)); //nos vamos utilizar o form builder e o form builder tem o controle para cada campo, o group que é o grupo de campos que é o nosso proprio formulario e tambem um array. E cada campo desse array vai ser os valores ali em cima
-    
+
     /*
-    return 
+    return
       this.formBuilder.array([
       new FormControl(false),
       new FormControl(false),
@@ -253,7 +235,7 @@ export class DataFormComponent implements OnInit{
 
   requiredMinCheckbox(min = 1){
     const validator = (formArray: AbstractControl) => { //toda vez que fazermos validação passamos o tipo de campo que estamos fazendo a validação
-      
+
       /*
       const values = formArray.controls;
       let totalChecked: any = 0;
@@ -263,16 +245,16 @@ export class DataFormComponent implements OnInit{
         }
       }
       */
-      
-     
+
+
       if(formArray instanceof FormArray){
         const totalChecked = formArray.controls
         .map((v: any) => v.value)
         .reduce((total, current) => current ? total + current : total, 0);
       }
-       
+
        //ela vai pegar o valor e ta interessada apenas no value desse valor tendo assim um array de true ou false. Vamos utilzar o reduce que vai reduzir todos os valores em um
-       
+
       throw new Error('formArray is not an instace of FormArray'); //se o campo tiver pelo menos um valor marcado retornamos null se não tiver nada marcado retornamos um objeto que vai falar que p campo deve ser requirido
 
     };
@@ -301,10 +283,10 @@ export class DataFormComponent implements OnInit{
     return validator;
 }
 
-  
-  
+
+
   // todo esse codigo foi passado para uma classe validacion do tipo static ou seja vc tem apenas uma isntancia para cada chamada, é como se vc um codigo compartilhado
 
-  
-  
+
+
 }

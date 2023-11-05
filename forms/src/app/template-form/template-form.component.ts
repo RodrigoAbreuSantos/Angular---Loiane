@@ -61,20 +61,6 @@ export class TemplateFormComponent {
 
 
   populaDadosForm(dados: any, formulario: any){
-    /*formulario.set.value({
-      nome: formulario.value.nome,
-      email: formulario.value.email,
-      endereco: {
-        cep: dados.cep,
-        numero: '',
-        complemento: dados.complemento,
-        rua: dados.logradouro,
-        bairro: dados.bairro,
-        cidade: dados.localidade,
-        estado: dados.uf
-      }
-    });*/
-
     formulario.form.patchValue({
       endereco: {
         cep: dados.cep,
@@ -86,22 +72,6 @@ export class TemplateFormComponent {
       }
     }); //no Angular atual, o que funciona é o patchValue, o set.value não funciona
   }
-
-  /*
-  {
-      "cep": "01001-000",
-      "logradouro": "Praça da Sé",
-      "complemento": "lado ímpar",
-      "bairro": "Sé",
-      "localidade": "São Paulo",
-      "uf": "SP",
-      "ibge": "3550308",
-      "gia": "1004",
-      "ddd": "11",
-      "siafi": "7107"
-    }
-  */
-
 
   resetaDadosForm(formulario2: any){
     formulario2.form.patchValue({
@@ -116,7 +86,3 @@ export class TemplateFormComponent {
     });
   }
 }
-function subscribe(arg0: (dados: any) => void) {
-  throw new Error('Function not implemented.');
-}
-
